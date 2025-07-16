@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-pink-500 hover:from-primary/90 hover:to-pink-500/90 text-white font-medium py-3 px-6 rounded-md transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium py-3 px-6 rounded-md transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 text-secondary font-medium py-2 px-4 rounded-md transition-all duration-200 transform hover:scale-105;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02];
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-gray-200 rounded-md focus:border-primary focus:outline-none transition-colors duration-200 bg-white text-secondary placeholder-gray-500;
+  }
+  
+  .filter-pill {
+    @apply bg-gray-100 hover:bg-gray-200 text-secondary px-4 py-2 rounded-full text-sm transition-all duration-200 cursor-pointer;
+  }
+  
+  .filter-pill.active {
+    @apply bg-gradient-to-r from-primary to-pink-500 text-white;
+  }
+  
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::before {
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    content: '';
+    animation: shimmer 2s infinite;
+  }
+}
+
+/* Toast Customizations */
+.Toastify__toast-container {
+  @apply text-sm font-medium;
+}
+
+.Toastify__toast {
+  @apply rounded-lg shadow-lg;
+}
+
+.Toastify__toast--success {
+  @apply bg-gradient-to-r from-success to-green-500;
+}
+
+.Toastify__toast--error {
+  @apply bg-gradient-to-r from-error to-red-500;
+}
+
+.Toastify__toast--warning {
+  @apply bg-gradient-to-r from-warning to-yellow-500;
+}
+
+.Toastify__toast--info {
+  @apply bg-gradient-to-r from-info to-blue-500;
+}
+
+.Toastify__close-button {
+  @apply text-white/80 hover:text-white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}

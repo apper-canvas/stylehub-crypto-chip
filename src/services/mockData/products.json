@@ -1,0 +1,291 @@
+[
+  {
+    "Id": 1,
+    "name": "Floral Print Maxi Dress",
+    "brand": "Zara",
+    "price": 2999,
+    "discountPrice": 1999,
+    "images": [
+      "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["Red", "Blue", "Pink"],
+    "category": "Women",
+    "subcategory": "Dresses",
+    "inStock": true,
+    "rating": 4.3,
+    "reviewCount": 156
+  },
+  {
+    "Id": 2,
+    "name": "Casual Cotton T-Shirt",
+    "brand": "H&M",
+    "price": 799,
+    "discountPrice": 599,
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": ["White", "Black", "Gray", "Navy"],
+    "category": "Men",
+    "subcategory": "T-Shirts",
+    "inStock": true,
+    "rating": 4.1,
+    "reviewCount": 89
+  },
+  {
+    "Id": 3,
+    "name": "Denim Jacket",
+    "brand": "Levi's",
+    "price": 3999,
+    "discountPrice": 2999,
+    "images": [
+      "https://images.unsplash.com/photo-1544966503-7cc5ac882d5d?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["Blue", "Light Blue", "Dark Blue"],
+    "category": "Women",
+    "subcategory": "Jackets",
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 203
+  },
+  {
+    "Id": 4,
+    "name": "Formal Blazer",
+    "brand": "Raymond",
+    "price": 5999,
+    "discountPrice": 4499,
+    "images": [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560563808-bf2ce45f7ecb?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": ["Black", "Navy", "Gray", "Charcoal"],
+    "category": "Men",
+    "subcategory": "Blazers",
+    "inStock": true,
+    "rating": 4.4,
+    "reviewCount": 124
+  },
+  {
+    "Id": 5,
+    "name": "Sneakers",
+    "brand": "Nike",
+    "price": 4999,
+    "discountPrice": 3999,
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["6", "7", "8", "9", "10", "11"],
+    "colors": ["White", "Black", "Red", "Blue"],
+    "category": "Footwear",
+    "subcategory": "Sneakers",
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 340
+  },
+  {
+    "Id": 6,
+    "name": "Kids Summer Dress",
+    "brand": "Mothercare",
+    "price": 1299,
+    "discountPrice": 899,
+    "images": [
+      "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y"],
+    "colors": ["Pink", "Yellow", "Purple", "White"],
+    "category": "Kids",
+    "subcategory": "Dresses",
+    "inStock": true,
+    "rating": 4.2,
+    "reviewCount": 67
+  },
+  {
+    "Id": 7,
+    "name": "Silk Scarf",
+    "brand": "Hermès",
+    "price": 8999,
+    "discountPrice": 6999,
+    "images": [
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1590393811106-d2c2a2a21729?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["One Size"],
+    "colors": ["Red", "Blue", "Green", "Gold"],
+    "category": "Accessories",
+    "subcategory": "Scarves",
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 45
+  },
+  {
+    "Id": 8,
+    "name": "Leather Handbag",
+    "brand": "Coach",
+    "price": 12999,
+    "discountPrice": 9999,
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["Small", "Medium", "Large"],
+    "colors": ["Black", "Brown", "Tan", "Red"],
+    "category": "Accessories",
+    "subcategory": "Handbags",
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 189
+  },
+  {
+    "Id": 9,
+    "name": "Casual Chinos",
+    "brand": "Uniqlo",
+    "price": 2499,
+    "discountPrice": 1899,
+    "images": [
+      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1506629905607-d2fa7a1c9f0c?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["28", "30", "32", "34", "36", "38"],
+    "colors": ["Khaki", "Navy", "Gray", "Black"],
+    "category": "Men",
+    "subcategory": "Trousers",
+    "inStock": true,
+    "rating": 4.3,
+    "reviewCount": 112
+  },
+  {
+    "Id": 10,
+    "name": "Bohemian Blouse",
+    "brand": "Free People",
+    "price": 3499,
+    "discountPrice": 2599,
+    "images": [
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["XS", "S", "M", "L"],
+    "colors": ["White", "Cream", "Dusty Rose", "Sage"],
+    "category": "Women",
+    "subcategory": "Tops",
+    "inStock": true,
+    "rating": 4.4,
+    "reviewCount": 98
+  },
+  {
+    "Id": 11,
+    "name": "Running Shoes",
+    "brand": "Adidas",
+    "price": 3999,
+    "discountPrice": 2999,
+    "images": [
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571019613914-85f342c6a11e?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["6", "7", "8", "9", "10", "11", "12"],
+    "colors": ["Black", "White", "Gray", "Blue"],
+    "category": "Footwear",
+    "subcategory": "Running Shoes",
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 267
+  },
+  {
+    "Id": 12,
+    "name": "Winter Coat",
+    "brand": "The North Face",
+    "price": 8999,
+    "discountPrice": 6999,
+    "images": [
+      "https://images.unsplash.com/photo-1544966503-7cc5ac882d5d?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["Black", "Navy", "Gray", "Burgundy"],
+    "category": "Women",
+    "subcategory": "Coats",
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 156
+  },
+  {
+    "Id": 13,
+    "name": "Polo Shirt",
+    "brand": "Ralph Lauren",
+    "price": 2999,
+    "discountPrice": 2299,
+    "images": [
+      "https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": ["White", "Navy", "Red", "Green"],
+    "category": "Men",
+    "subcategory": "Polo Shirts",
+    "inStock": true,
+    "rating": 4.2,
+    "reviewCount": 134
+  },
+  {
+    "Id": 14,
+    "name": "Kids Jeans",
+    "brand": "Gap Kids",
+    "price": 1999,
+    "discountPrice": 1499,
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["2-3Y", "4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"],
+    "colors": ["Light Blue", "Dark Blue", "Black"],
+    "category": "Kids",
+    "subcategory": "Jeans",
+    "inStock": true,
+    "rating": 4.3,
+    "reviewCount": 78
+  },
+  {
+    "Id": 15,
+    "name": "Wrist Watch",
+    "brand": "Fossil",
+    "price": 6999,
+    "discountPrice": 5499,
+    "images": [
+      "https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["One Size"],
+    "colors": ["Silver", "Gold", "Black", "Rose Gold"],
+    "category": "Accessories",
+    "subcategory": "Watches",
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 221
+  },
+  {
+    "Id": 16,
+    "name": "Yoga Pants",
+    "brand": "Lululemon",
+    "price": 3999,
+    "discountPrice": 2999,
+    "images": [
+      "https://images.unsplash.com/photo-1506629905607-d2fa7a1c9f0c?w=400&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?w=400&h=600&fit=crop"
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "colors": ["Black", "Navy", "Gray", "Burgundy"],
+    "category": "Women",
+    "subcategory": "Activewear",
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 298
+  }
+]
