@@ -181,11 +181,9 @@ const currentPrice = product.discountPrice || product.price
                   </span>
                 )}
               </div>
-            )}
+)}
           </div>
         </div>
-      </Link>
-</div>
       </Link>
     </motion.div>
   );
