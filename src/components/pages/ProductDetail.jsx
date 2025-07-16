@@ -1,28 +1,32 @@
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { productService } from "@/services/api/productService";
+import { ImageIcon } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
 import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
-import Badge from "@/components/atoms/Badge";
-import ProductCard from "@/components/molecules/ProductCard";
-import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
-
-const ProductDetail = () => {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [relatedProducts, setRelatedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("");
-  const [quantity, setQuantity] = useState(1);
+import Loading from "@/components/ui/Loading";
+import Cart from "@/components/pages/Cart";
+import Home from "@/components/pages/Home";
+import ProductCard from "@/components/molecules/ProductCard";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import { productService } from "@/services/api/productService";
+export default function ProductDetail() {
+  const { id } = useParams()
+const [product, setProduct] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [selectedSize, setSelectedSize] = useState('')
+  const [selectedColor, setSelectedColor] = useState('')
+  const [quantity, setQuantity] = useState(1)
+  const [relatedProducts, setRelatedProducts] = useState([])
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+  const [imageErrors, setImageErrors] = useState({})
+  const [imageRetries, setImageRetries] = useState({})
   
-  const { addToCart } = useCart();
+  const { addToCart } = useCart()
   const { isInWishlist, toggleWishlist } = useWishlist();
 
   useEffect(() => {
@@ -55,96 +59,133 @@ const ProductDetail = () => {
       setLoading(false);
     }
   };
-
-  const handleAddToCart = () => {
-    if (!selectedSize && product.sizes.length > 0) {
-      alert("Please select a size");
-      return;
-    }
+const handleAddToCart = () => {
+    if (!product) return;
     
-    addToCart(product, selectedSize, selectedColor);
+    const productToAdd = {
+      id: product.Id,
+      name: product.name,
+      price: product.discountPrice || product.price,
+      image: product.images?.[0] || '',
+      size: selectedSize,
+      color: selectedColor,
+      quantity: quantity,
+      brand: product.brand
+    };
+    
+    addToCart(productToAdd);
   };
 
-  const discountPercentage = product?.discountPrice 
+  const handleImageError = (index) => {
+    const maxRetries = 2
+    const currentRetries = imageRetries[index] || 0
+    
+    if (currentRetries < maxRetries) {
+      setImageRetries(prev => ({
+        ...prev,
+        [index]: currentRetries + 1
+      }))
+      // Trigger retry by updating the image src
+      setTimeout(() => {
+        setImageErrors(prev => ({
+          ...prev,
+          [index]: false
+        }))
+      }, 100)
+    } else {
+      setImageErrors(prev => ({
+        ...prev,
+        [index]: true
+      }))
+    }
+  }
+
+  const handleImageLoad = (index) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [index]: false
+    }))
+  }
+
+  const getImageSrc = (imageUrl, index) => {
+    const retryCount = imageRetries[index] || 0
+    return retryCount > 0 ? `${imageUrl}&retry=${retryCount}` : imageUrl
+  }
+
+const discountPercentage = product?.discountPrice 
     ? Math.round(((product.price - product.discountPrice) / product.price) * 100)
     : 0;
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Loading type="productDetail" />
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Error message={error} onRetry={loadProduct} />
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <Loading />;
+  if (error) return <Error message={error} />;
+  if (!product) return <Error message="Product not found" />;
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Breadcrumb */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center space-x-2 text-sm">
-            <Link to="/" className="text-gray-500 hover:text-primary">
-              Home
-            </Link>
-            <ApperIcon name="ChevronRight" className="w-4 h-4 text-gray-400" />
-            <Link 
-              to={`/category/${product.category.toLowerCase()}`}
-              className="text-gray-500 hover:text-primary"
-            >
-              {product.category}
-            </Link>
-            <ApperIcon name="ChevronRight" className="w-4 h-4 text-gray-400" />
-            <span className="text-secondary">{product.name}</span>
-          </nav>
-        </div>
-      </div>
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+          <Link to="/" className="hover:text-primary">Home</Link>
+          <span>/</span>
+          <Link to={`/category/${product.category?.toLowerCase()}`} className="hover:text-primary">
+            {product.category}
+          </Link>
+          <span>/</span>
+          <span className="text-secondary">{product.name}</span>
+        </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Product Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div className="space-y-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="aspect-square bg-white rounded-lg overflow-hidden shadow-md"
-            >
-              <img
-                src={product.images[selectedImage]}
-                alt={product.name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </motion.div>
-            
-            <div className="grid grid-cols-4 gap-2">
-              {product.images.map((image, index) => (
-                <motion.button
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => setSelectedImage(index)}
-                  className={`aspect-square bg-white rounded-lg overflow-hidden border-2 transition-colors duration-200 ${
-                    selectedImage === index ? "border-primary" : "border-gray-200"
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`${product.name} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.button>
-              ))}
+            {/* Main Image */}
+            <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+              {product.images && product.images[selectedImageIndex] && !imageErrors[selectedImageIndex] ? (
+                <img
+                  src={getImageSrc(product.images[selectedImageIndex], selectedImageIndex)}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                  onLoad={() => handleImageLoad(selectedImageIndex)}
+                  onError={() => handleImageError(selectedImageIndex)}
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                  <div className="text-center text-gray-500">
+                    <ImageIcon className="w-16 h-16 mx-auto mb-2" />
+                    <p className="text-sm">Image not available</p>
+                  </div>
+                </div>
+              )}
             </div>
+            
+            {/* Thumbnail Images */}
+            {product.images && product.images.length > 1 && (
+              <div className="flex space-x-2 mt-4">
+                {product.images.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
+                      selectedImageIndex === index ? 'border-primary' : 'border-gray-200'
+                    }`}
+                  >
+                    {!imageErrors[index] ? (
+                      <img
+                        src={getImageSrc(image, index)}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        onLoad={() => handleImageLoad(index)}
+                        onError={() => handleImageError(index)}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                        <ImageIcon className="w-4 h-4 text-gray-400" />
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
@@ -193,7 +234,7 @@ const ProductDetail = () => {
             </div>
 
             {/* Size Selection */}
-            {product.sizes.length > 0 && (
+{product.sizes && product.sizes.length > 0 && (
               <div>
                 <h3 className="font-medium mb-3">Size</h3>
                 <div className="flex flex-wrap gap-2">
@@ -215,7 +256,7 @@ const ProductDetail = () => {
             )}
 
             {/* Color Selection */}
-            {product.colors.length > 0 && (
+{product.colors && product.colors.length > 0 && (
               <div>
                 <h3 className="font-medium mb-3">Color</h3>
                 <div className="flex flex-wrap gap-2">
@@ -278,10 +319,10 @@ const ProductDetail = () => {
             <div className="border-t pt-6">
               <h3 className="font-medium mb-3">Product Details</h3>
               <div className="space-y-2 text-gray-600">
-                <p>Category: {product.category}</p>
+<p>Category: {product.category}</p>
                 <p>Brand: {product.brand}</p>
-                <p>Available Colors: {product.colors.join(", ")}</p>
-                <p>Available Sizes: {product.sizes.join(", ")}</p>
+                <p>Available Colors: {product.colors?.join(", ") || "None"}</p>
+                <p>Available Sizes: {product.sizes?.join(", ") || "None"}</p>
                 <p>Product ID: {product.Id}</p>
               </div>
             </div>
@@ -305,5 +346,3 @@ const ProductDetail = () => {
     </div>
   );
 };
-
-export default ProductDetail;
